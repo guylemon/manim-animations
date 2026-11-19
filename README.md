@@ -25,6 +25,7 @@ Scenes use [Manim Community](https://www.manim.community/) 0.22. A LaTeX install
 ```bash
 pip install "manim>=0.22,<0.23"
 manim -qh --fps 30 scenes/kinematic_rotation.py KinematicRotation
+manim -qh --fps 30 scenes/mapping_of_the_plane.py MappingOfThePlane
 ```
 
 `-qh` renders at 1080p. `--fps 30` is enough for playback on the library page and keeps the file smaller than the 60 fps default. Use `-qm` for a faster 720p preview, or `-ql` while adjusting the scene. If `manim` is not on your `PATH`, run `python3 -m manim` with the same arguments.
@@ -115,4 +116,6 @@ No custom domain is configured. A file named `docs/.nojekyll` is included so the
 
 ## What is listed today
 
-[GRO-35](https://linear.app/gl-grokbots/issue/GRO-35/kinematic-rotation-of-abc-about-a-point-on-line-l), the kinematic rotation of the plane about a point on a line, is the film in the catalog. Its scene is [`scenes/kinematic_rotation.py`](scenes/kinematic_rotation.py) and the render served by the library is [`docs/videos/gro-35-kinematic-rotation.mp4`](docs/videos/gro-35-kinematic-rotation.mp4).
+[GRO-35](https://linear.app/gl-grokbots/issue/GRO-35/kinematic-rotation-of-abc-about-a-point-on-line-l), the kinematic rotation of the plane about a point on a line, is one film in the catalog. Its scene is [`scenes/kinematic_rotation.py`](scenes/kinematic_rotation.py) and the render served by the library is [`docs/videos/gro-35-kinematic-rotation.mp4`](docs/videos/gro-35-kinematic-rotation.mp4).
+
+[GRO-38](https://linear.app/gl-grokbots/issue/GRO-38/manim-video-storyboard-mapping-of-the-plane-lang-basic-mathematics-ch) is the definition of a mapping of the plane into itself, from Lang, Chapter 6, §1. Its scene is [`scenes/mapping_of_the_plane.py`](scenes/mapping_of_the_plane.py) and the render served by the library is [`docs/videos/gro-38-mapping-of-the-plane.mp4`](docs/videos/gro-38-mapping-of-the-plane.mp4). The storyboard's narration is on-screen text. This repository has no voiceover pipeline.
