@@ -10,10 +10,13 @@
       "topic": "Plane isometries",
       "chapter": "Lang, Basic Mathematics, Chapter 6",
       "date": "2026-11-19",
-      "status": "upcoming",
-      "description": "Fix a point $O$ on a line $L$. The isometry is rotation of the plane about $O$ through a fixed angle $\\theta$. For $t \\in [0, 1]$, every point $P$ moves at constant distance from $O$ so that the directed angle $\\angle POP(t) = t\\theta$. Triangle $\\triangle ABC$ is carried as a rigid body: its vertices travel on circular arcs centered at $O$, and $L$ rotates onto a line $L'$ through $O$ at angle $\\theta$. This illustrates the distance-preserving mappings in Lang, Basic Mathematics, Chapter 6, §1.",
-      "video": null,
-      "source": null,
+      "status": "ready",
+      "description": "Fix a point $O$ on a line $L$. The isometry is rotation of the plane about $O$ through a fixed angle $\\theta$ (here $60^\\circ$). For $t \\in [0, 1]$, every point $P$ moves at constant distance from $O$ so that the directed angle $\\angle POP(t) = t\\theta$. Triangle $\\triangle ABC$ is carried as a rigid body: its vertices travel on circular arcs centered at $O$, the side lengths stay fixed, and $L$ rotates onto a line $L'$ through $O$ at angle $\\theta$. This illustrates the distance-preserving mappings in Lang, Basic Mathematics, Chapter 6, §1.",
+      "video": {
+        "mp4": "videos/gro-35-kinematic-rotation.mp4",
+        "poster": "videos/gro-35-kinematic-rotation.jpg"
+      },
+      "source": "scenes/kinematic_rotation.py",
       "issue": "https://linear.app/gl-grokbots/issue/GRO-35/kinematic-rotation-of-abc-about-a-point-on-line-l",
       "issueId": "GRO-35"
     }
