@@ -106,7 +106,7 @@
 
   function searchable(item) {
     const description = String(item.description || "").replace(/\\([a-zA-Z]+)/g, "$1");
-    return [item.title, description, item.topic, item.chapter, item.issueId, item.id, item.status]
+    return [item.title, description, item.topic, item.chapter, item.id, item.status]
       .filter(Boolean)
       .join("\n")
       .toLowerCase();
@@ -287,9 +287,6 @@
     const row = el("div", "links");
     if (item.source) {
       row.appendChild(externalLink(sourceHref(item.source), "Source scene"));
-    }
-    if (item.issue) {
-      row.appendChild(externalLink(item.issue, item.issueId || "Related issue"));
     }
     return row.childNodes.length ? row : null;
   }

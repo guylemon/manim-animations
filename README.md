@@ -16,7 +16,7 @@ python3 -m http.server -d docs 8000
 
 Then open http://127.0.0.1:8000/
 
-The page reads [`docs/catalog.json`](docs/catalog.json) and groups the films by topic. A second control lists them by year, and that arrangement is also available at `?view=date`. Each card shows the title, a short mathematical description, a video player when a render is listed, and any links to the scene file and the related issue. A filter box narrows the list by title, topic, or text in the description.
+The page reads [`docs/catalog.json`](docs/catalog.json) and groups the films by topic. A second control lists them by year, and that arrangement is also available at `?view=date`. Each card shows the title, a short mathematical description, a video player when a render is listed, and a link to the scene file when one is listed. A filter box narrows the list by title, topic, or text in the description.
 
 ## Render a scene locally
 
@@ -63,8 +63,6 @@ Within a topic, cards stay in the order they appear in the catalog. The chronolo
 | `status` | no | `ready` (the default) or `upcoming` when the film is not rendered yet. |
 | `video` | no | A path under `docs/`, such as `videos/example.mp4`, or an `https://` URL. An object `{"mp4", "webm", "poster"}` supplies more than one file. |
 | `source` | no | Scene file in this repository, such as `scenes/rotation.py`, or an `https://` URL. The page links to it on GitHub. |
-| `issue` | no | URL of the related Linear issue, or any other issue. |
-| `issueId` | no | Short label for that link, such as `GRO-35`. |
 
 Example of a finished entry:
 
@@ -78,9 +76,7 @@ Example of a finished entry:
   "status": "ready",
   "description": "Fix a point $O$ on a line $L$. Rotation about $O$ through an angle $\\theta$ carries $\\triangle ABC$ as a rigid body.",
   "video": "videos/gro-35-kinematic-rotation.mp4",
-  "source": "scenes/kinematic_rotation.py",
-  "issue": "https://linear.app/gl-grokbots/issue/GRO-35/kinematic-rotation-of-abc-about-a-point-on-line-l",
-  "issueId": "GRO-35"
+  "source": "scenes/kinematic_rotation.py"
 }
 ```
 
@@ -93,7 +89,7 @@ To offer both containers, use an object instead of a single path:
 }
 ```
 
-Leave `video` and `source` as `null` and set `"status": "upcoming"` when the scene or the render is not in the repository yet. The card keeps the description and the issue link, and the player appears once `video` points at a file that exists.
+Leave `video` and `source` as `null` and set `"status": "upcoming"` when the scene or the render is not in the repository yet. The card keeps the description, and the player appears once `video` points at a file that exists.
 
 ### Where the video comes from
 
@@ -101,7 +97,7 @@ The player uses the file GitHub Pages serves with the site, from `docs/videos/`,
 
 Do not store these files with Git LFS. GitHub Pages would serve the pointer text instead of the video. If a render is too large to commit, set `video` to an `https://` URL and the same player will use that address.
 
-`scripts/validate_catalog.py` rejects a `video` or `source` path that does not exist, a duplicate `id`, and a catalog that is not valid JSON.
+`scripts/validate_catalog.py` rejects a `video` or `source` path that does not exist, a duplicate `id`, a catalog that is not valid JSON, and the removed `issue` and `issueId` fields.
 
 ## Publish on GitHub Pages
 
