@@ -17,6 +17,20 @@
         "poster": "videos/gro-35-kinematic-rotation.jpg"
       },
       "source": "scenes/kinematic_rotation.py"
+    },
+    {
+      "id": "gro-38-mapping-of-the-plane",
+      "title": "Mapping of the plane into itself",
+      "topic": "Mappings of the plane",
+      "chapter": "Lang, Basic Mathematics, Chapter 6, §1",
+      "date": "2026-11-19",
+      "status": "ready",
+      "description": "A mapping of the plane into itself associates to each point $P$ a point $P'$, written $P \\mapsto P'$. The point $P'$ is the value of the mapping at $P$, also called the image of $P$. Naming the mapping $F$, one writes $F(P) = P'$. Two mappings are equal precisely when they take the same value at every point: $F = G$ if and only if $F(P) = G(P)$ for every point $P$.",
+      "video": {
+        "mp4": "videos/gro-38-mapping-of-the-plane.mp4",
+        "poster": "videos/gro-38-mapping-of-the-plane.jpg"
+      },
+      "source": "scenes/mapping_of_the_plane.py"
     }
   ]
 }
