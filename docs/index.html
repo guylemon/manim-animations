@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#7f2d2d">
+    <meta name="description" content="A browsable library of short mathematical films rendered with Manim.">
+    <title>Manim Animations</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#library">Skip to animations</a>
+    <header class="masthead">
+      <div class="wrap">
+        <p class="eyebrow">Manim</p>
+        <h1>Animations</h1>
+        <p class="lede" id="lede">Short mathematical films rendered with Manim.</p>
+        <p class="stats" id="stats" aria-live="polite">Loading the library…</p>
+        <div class="toolbar">
+          <div class="views" role="group" aria-label="Arrange animations">
+            <button type="button" id="view-topic" aria-pressed="true">By topic</button>
+            <button type="button" id="view-date" aria-pressed="false">Chronological</button>
+          </div>
+          <label class="search">
+            <span class="visually-hidden">Filter animations</span>
+            <input id="filter" type="search" placeholder="Filter by title or topic" autocomplete="off">
+          </label>
+        </div>
+      </div>
+    </header>
+    <div class="wrap layout">
+      <nav class="topics" id="topics" aria-label="Topics"></nav>
+      <main id="library">
+        <p class="loading">Loading the library…</p>
+        <noscript>
+          <p>JavaScript builds this page from <code>catalog.json</code>. The catalog file in the repository lists every animation directly.</p>
+        </noscript>
+      </main>
+    </div>
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>Add a film by editing <code>docs/catalog.json</code> and placing the render in <code>docs/videos/</code>.</p>
+        <p><a id="repo-link" href="https://github.com/guylemon/manim-animations">guylemon/manim-animations</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
