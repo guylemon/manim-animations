@@ -82,9 +82,14 @@ def validate_data(data: object, root: Path, docs: Path) -> list[str]:
         if status not in STATUSES:
             errors.append(f"{where}.status must be 'ready' or 'upcoming'")
 
-        for key in ("chapter", "issueId"):
-            if key in item and item[key] is not None and not isinstance(item[key], str):
-                errors.append(f"{where}.{key} must be a string or null")
+        if "chapter" in item and item["chapter"] is not None and not isinstance(item["chapter"], str):
+            errors.append(f"{where}.chapter must be a string or null")
+
+        for key in ("issue", "issueId"):
+            if key in item:
+                errors.append(
+                    f"{where}.{key} is not a catalog field; the library does not link to issues"
+                )
 
         if item.get("date") not in (None, ""):
             date = item.get("date")
@@ -115,11 +120,6 @@ def validate_data(data: object, root: Path, docs: Path) -> list[str]:
                 errors.append(f"{where}.source must be a string or null")
             else:
                 check_repo_path(source, f"{where}.source", root, errors)
-
-        issue = item.get("issue")
-        if issue not in (None, ""):
-            if not isinstance(issue, str) or not issue.startswith(("https://", "http://")):
-                errors.append(f"{where}.issue must be an http(s) URL or null")
 
     return errors
 

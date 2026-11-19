@@ -16,9 +16,7 @@
         "mp4": "videos/gro-35-kinematic-rotation.mp4",
         "poster": "videos/gro-35-kinematic-rotation.jpg"
       },
-      "source": "scenes/kinematic_rotation.py",
-      "issue": "https://linear.app/gl-grokbots/issue/GRO-35/kinematic-rotation-of-abc-about-a-point-on-line-l",
-      "issueId": "GRO-35"
+      "source": "scenes/kinematic_rotation.py"
     }
   ]
 }
