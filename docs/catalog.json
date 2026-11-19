@@ -1,0 +1,21 @@
+{
+  "title": "Manim Animations",
+  "summary": "Short mathematical films rendered with Manim.",
+  "repository": "https://github.com/guylemon/manim-animations",
+  "branch": "main",
+  "animations": [
+    {
+      "id": "gro-35-kinematic-rotation",
+      "title": "Kinematic rotation of △ABC about a point on line L",
+      "topic": "Plane isometries",
+      "chapter": "Lang, Basic Mathematics, Chapter 6",
+      "date": "2026-11-19",
+      "status": "upcoming",
+      "description": "Fix a point $O$ on a line $L$. The isometry is rotation of the plane about $O$ through a fixed angle $\\theta$. For $t \\in [0, 1]$, every point $P$ moves at constant distance from $O$ so that the directed angle $\\angle POP(t) = t\\theta$. Triangle $\\triangle ABC$ is carried as a rigid body: its vertices travel on circular arcs centered at $O$, and $L$ rotates onto a line $L'$ through $O$ at angle $\\theta$. This illustrates the distance-preserving mappings in Lang, Basic Mathematics, Chapter 6, §1.",
+      "video": null,
+      "source": null,
+      "issue": "https://linear.app/gl-grokbots/issue/GRO-35/kinematic-rotation-of-abc-about-a-point-on-line-l",
+      "issueId": "GRO-35"
+    }
+  ]
+}
