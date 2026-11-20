@@ -691,7 +691,7 @@ class MappingOfThePlane(Scene):
             height=height,
             corner_radius=0.06,
             stroke_color=PANEL_STROKE,
-            stroke_width=1.7,
+            stroke_width=10,
             fill_color=BACKGROUND,
             fill_opacity=0.35,
         )
