@@ -34,6 +34,21 @@ Manim writes the MP4 under `media/videos/`. That directory is local scratch and 
 
 The Pages workflow does not render scenes. It checks that every path listed in the catalog exists.
 
+## Shared colors
+
+Scenes share one palette, [`scenes/theme.py`](scenes/theme.py). Manim adds the scene file's directory to the import path, so a new scene in `scenes/` imports the colors directly:
+
+```python
+from manim import Scene
+from theme import BACKGROUND, BLUE, ORANGE, CREAM
+
+class Example(Scene):
+    def construct(self):
+        self.camera.background_color = BACKGROUND
+```
+
+`BLUE` is the ink for points and lines. `ORANGE` is the gold for arrows and emphasis (`#ffd166`; the name is the one the mapping scene already uses). `GOLD` and `RED` are the same warm coral (`#ff8b7b`). Caption panels use `PANEL`, `PANEL_STROKE`, and `CREAM`. The module docstring lists every name, including the rotation scene's aliases (`LINE_COLOR`, `LINE_IMAGE`, and the rest).
+
 ## Add an animation
 
 Adding a film is one catalog entry, plus the video file when a render exists.
