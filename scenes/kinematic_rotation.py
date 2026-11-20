@@ -45,6 +45,31 @@ from manim import (
     smooth,
 )
 
+from theme import (
+    BACKGROUND,
+    CREAM,
+    GRID,
+    GRID_EXTENT,
+    GRID_HALF,
+    GRID_MAJOR_OPACITY,
+    GRID_MAJOR_STROKE_WIDTH,
+    GRID_MINOR_OPACITY,
+    GRID_MINOR_STROKE_WIDTH,
+    LATTICE,
+    LINE_COLOR,
+    LINE_IMAGE,
+    MUTED,
+    PANEL,
+    PANEL_CORNER_RADIUS,
+    PANEL_FILL_OPACITY,
+    PANEL_STROKE,
+    PANEL_STROKE_WIDTH,
+    SAMPLE_COLOR,
+    TRI_FILL,
+    TRI_STROKE,
+    VERTEX_COLORS,
+)
+
 # Counterclockwise through a sixth of a turn. Large enough that L and L'
 # are easy to tell apart, and small enough that the triangle stays on screen.
 THETA = TAU / 6
@@ -63,23 +88,6 @@ SAMPLE_POINTS = (
     np.array([-1.15, -2.15, 0.0]),
 )
 
-BACKGROUND = "#0e1218"
-PANEL = "#1a2330"
-PANEL_STROKE = "#3d4f66"
-CREAM = "#f6f1e7"
-MUTED = "#b7c3d1"
-GRID = "#3d5672"
-GRID_HALF = "#2a3c52"
-LATTICE = "#8ea3b8"
-LINE_COLOR = "#8ec5ff"
-LINE_IMAGE = "#ffd166"
-VERTEX_COLORS = ("#ff8b7b", "#7ddeb3", "#d4c2ff")
-SAMPLE_COLOR = "#d5e2f0"
-TRI_FILL = "#f0d2aa"
-TRI_STROKE = "#f7efe4"
-
-# Square grid large enough that a 60 degree turn still covers the camera.
-GRID_EXTENT = 9.5
 # Inner disk reserved for the angle mark at O.
 ANGLE_RADIUS = 0.98
 
@@ -180,8 +188,10 @@ def build_grid() -> VGroup:
         # The axes are drawn again, thicker, as the line L and are not special
         # grid lines. Keep every grid line, including the axes, equally quiet.
         color = GRID if major or abs(value) < 1e-6 else GRID_HALF
-        width = 1.35 if major or abs(value) < 1e-6 else 0.8
-        opacity = 0.85 if major or abs(value) < 1e-6 else 0.55
+        width = (
+            GRID_MAJOR_STROKE_WIDTH if major or abs(value) < 1e-6 else GRID_MINOR_STROKE_WIDTH
+        )
+        opacity = GRID_MAJOR_OPACITY if major or abs(value) < 1e-6 else GRID_MINOR_OPACITY
         start_h = np.array([-GRID_EXTENT, value, 0.0])
         end_h = np.array([GRID_EXTENT, value, 0.0])
         start_v = np.array([value, -GRID_EXTENT, 0.0])
@@ -258,11 +268,11 @@ def panel_around(contents: VGroup, buff_x=0.28, buff_y=0.2) -> VGroup:
     frame = RoundedRectangle(
         width=contents.width + 2 * buff_x,
         height=contents.height + 2 * buff_y,
-        corner_radius=0.1,
+        corner_radius=PANEL_CORNER_RADIUS,
         fill_color=PANEL,
-        fill_opacity=0.94,
+        fill_opacity=PANEL_FILL_OPACITY,
         stroke_color=PANEL_STROKE,
-        stroke_width=1.25,
+        stroke_width=PANEL_STROKE_WIDTH,
     )
     frame.move_to(contents)
     group = VGroup(frame, contents)

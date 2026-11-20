@@ -47,21 +47,29 @@ from manim import (
 
 # Eight scenes, about 81 seconds. Each definitional sentence is held on
 # screen, with its diagram, for more than two seconds.
-# Palette and caption panels match the kinematic-rotation scene.
-BACKGROUND = "#0e1218"
-PANEL = "#1a2330"
-PANEL_STROKE = "#3d4f66"
-CREAM = "#f6f1e7"
-MUTED = "#b7c3d1"
-GRID = "#3d5672"
-GRID_HALF = "#2a3c52"
 # Points use the other film's line blue. Arrows and emphasis use its
 # image gold. The brief redraw of the arrow uses its warm vertex color.
-BLUE = "#8ec5ff"
-ORANGE = "#ffd166"
-GOLD = "#ff8b7b"
-RED = "#ff8b7b"
-GRID_EXTENT = 9.5
+from theme import (
+    BACKGROUND,
+    BLUE,
+    CREAM,
+    GOLD,
+    GRID,
+    GRID_EXTENT,
+    GRID_HALF,
+    GRID_MAJOR_OPACITY,
+    GRID_MAJOR_STROKE_WIDTH,
+    GRID_MINOR_OPACITY,
+    GRID_MINOR_STROKE_WIDTH,
+    MUTED,
+    ORANGE,
+    PANEL,
+    PANEL_CORNER_RADIUS,
+    PANEL_FILL_OPACITY,
+    PANEL_STROKE,
+    PANEL_STROKE_WIDTH,
+    RED,
+)
 
 Z_GRID = 0
 Z_CARD = 1
@@ -198,8 +206,10 @@ def build_grid() -> VGroup:
     for value in half_steps:
         major = abs(value - round(value)) < 1e-6 and abs(round(value)) > 1e-6
         color = GRID if major or abs(value) < 1e-6 else GRID_HALF
-        width = 1.35 if major or abs(value) < 1e-6 else 0.8
-        opacity = 0.85 if major or abs(value) < 1e-6 else 0.55
+        width = (
+            GRID_MAJOR_STROKE_WIDTH if major or abs(value) < 1e-6 else GRID_MINOR_STROKE_WIDTH
+        )
+        opacity = GRID_MAJOR_OPACITY if major or abs(value) < 1e-6 else GRID_MINOR_OPACITY
         lines.add(
             Line(
                 np.array([-GRID_EXTENT, value, 0.0]),
@@ -256,11 +266,11 @@ def panel_around(contents, buff_x=0.32, buff_y=0.16) -> VGroup:
     frame = RoundedRectangle(
         width=contents.width + 2 * buff_x,
         height=contents.height + 2 * buff_y,
-        corner_radius=0.1,
+        corner_radius=PANEL_CORNER_RADIUS,
         fill_color=PANEL,
-        fill_opacity=0.94,
+        fill_opacity=PANEL_FILL_OPACITY,
         stroke_color=PANEL_STROKE,
-        stroke_width=1.25,
+        stroke_width=PANEL_STROKE_WIDTH,
     )
     frame.move_to(contents)
     group = VGroup(frame, contents)
