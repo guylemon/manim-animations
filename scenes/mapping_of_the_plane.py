@@ -122,7 +122,8 @@ COMPARE = (
     # name, domain, image under both maps, domain label side, image label side
     ("P", np.array([-1.2, 0.55, 0.0]), np.array([0.2, 0.85, 0.0]), LEFT, UP),
     ("Q", np.array([1.05, 0.35, 0.0]), np.array([1.25, -0.45, 0.0]), UP, RIGHT),
-    ("R", np.array([-1.05, -0.58, 0.0]), np.array([0.15, 0.05, 0.0]), LEFT, UR),
+    # R's image sits under Q, so its label goes left, off the shaft and away from Q.
+    ("R", np.array([-1.05, -0.58, 0.0]), np.array([0.15, 0.05, 0.0]), LEFT, LEFT),
 )
 # G sends R somewhere else, until the two maps are made to agree.
 G_R_IMAGE = np.array([0.2, -0.95, 0.0])
@@ -628,7 +629,7 @@ class MappingOfThePlane(Scene):
                 domain_label.next_to(dot, domain_dir, buff=0.1)
                 image_label = math_label(rf"{letter}({name})", scale=0.46, color=ORANGE)
                 side = image_dir if not (letter == "G" and name == "R") else DOWN
-                image_label.next_to(picture, side, buff=0.1)
+                image_label.next_to(picture, side, buff=0.14)
                 arrow = association_arrow(start, end, width=2.7, tip_length=0.13)
                 domains.extend((dot, domain_label))
                 pictures.extend((picture, image_label, arrow))
@@ -654,7 +655,7 @@ class MappingOfThePlane(Scene):
         self.play(
             self.g_dot.animate.move_to(self.g_target),
             Transform(self.g_arrow, agreed),
-            self.g_label.animate.next_to(self.g_target, UR, buff=0.1),
+            self.g_label.animate.next_to(self.g_target, LEFT, buff=0.14),
             FadeOut(cross),
             FadeOut(unequal),
             run_time=1.25,
